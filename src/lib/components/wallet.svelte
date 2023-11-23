@@ -11,18 +11,31 @@
 	import {
 		PhantomWalletAdapter,
 		AlphaWalletAdapter,
-		CloverWalletAdapter
+		CloverWalletAdapter,
+		SolflareWalletAdapter
 	} from '@solana/wallet-adapter-wallets';
-	const wallets = [new PhantomWalletAdapter(), new AlphaWalletAdapter(), new CloverWalletAdapter()];
+	import { NETWORK } from '$lib/const';
+
+	const wallets = [
+		new PhantomWalletAdapter(),
+		new AlphaWalletAdapter(),
+		new CloverWalletAdapter(),
+		new SolflareWalletAdapter()
+	];
+
 	const localStorageKey = 'walletAdapter';
-	const network = clusterApiUrl('mainnet-beta');
+
+	const network = clusterApiUrl(NETWORK);
+
 	let showConnectWallet = false;
+
 	const connectWallet = async (event: CustomEvent<any>) => {
 		showConnectWallet = false;
 		await $walletStore.select(event.detail);
 		await $walletStore.connect();
 	};
 	const shortenAddress = (address: string) => `${address.slice(0, 4)}...${address.slice(-4)}`;
+
 	const disconnect = () => {
 		if (confirm('Disconnect wallet?')) {
 			$walletStore.disconnect();
