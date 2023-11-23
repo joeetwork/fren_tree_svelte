@@ -1,0 +1,755 @@
+{
+  "version": "0.1.0",
+  "name": "fren_tree",
+  "constants": [
+    {
+      "name": "USER",
+      "type": "bytes",
+      "value": "[85, 83, 69, 82]"
+    },
+    {
+      "name": "USERNAME",
+      "type": "bytes",
+      "value": "[85, 83, 69, 82, 78, 65, 77, 69]"
+    },
+    {
+      "name": "CONNECTION",
+      "type": "bytes",
+      "value": "[67, 79, 78, 78, 69, 67, 84, 73, 79, 78]"
+    },
+    {
+      "name": "REQUEST",
+      "type": "bytes",
+      "value": "[82, 69, 81, 85, 69, 83, 84]"
+    },
+    {
+      "name": "TOP",
+      "type": "bytes",
+      "value": "[84, 79, 80]"
+    },
+    {
+      "name": "DEVELOPER",
+      "type": "string",
+      "value": "\"Developer\""
+    },
+    {
+      "name": "DEGEN",
+      "type": "string",
+      "value": "\"Degen\""
+    },
+    {
+      "name": "ARTIST",
+      "type": "string",
+      "value": "\"Artist\""
+    },
+    {
+      "name": "INFLUENCER",
+      "type": "string",
+      "value": "\"Influencer\""
+    }
+  ],
+  "instructions": [
+    {
+      "name": "initializeUser",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "InitializeUserParams"
+          }
+        }
+      ]
+    },
+    {
+      "name": "addUsername",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "uniqueUsername",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "AddUniqueNameProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "changeRole",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "CheckRoleProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "upgradeUser",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "to",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "UpgradeUserProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "checkUpgrade",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "sendRequest",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "fromAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "toAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "connectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "SendRequestProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "acceptRequest",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "toAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "connectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "newConnectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "AcceptRequestProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "declineRequest",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "toAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "connectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "DeclineRequestProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "removeConnection",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "fromAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "toAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromConnectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "toConnectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "RemoveConnectionProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "initializeTopConnections",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "topConnectionsAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "addTopConnections",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "topConnectionsAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "AddTopConnectionsProps"
+          }
+        }
+      ]
+    },
+    {
+      "name": "removeTopConnections",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "topConnectionsAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "RemoveTopConnectionsProps"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserProfile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "twitter",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "upgrade",
+            "type": "bool"
+          },
+          {
+            "name": "upgradeTime",
+            "type": "i64"
+          },
+          {
+            "name": "connections",
+            "type": "u8"
+          },
+          {
+            "name": "requests",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RequestAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "from",
+            "type": "publicKey"
+          },
+          {
+            "name": "connectionNumber",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UniqueUsername",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "username",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConnectionAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "connection",
+            "type": "publicKey"
+          },
+          {
+            "name": "connectionNumber",
+            "type": "u8"
+          },
+          {
+            "name": "accepted",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TopConnectionsAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "devs",
+            "type": {
+              "vec": "i32"
+            }
+          },
+          {
+            "name": "artists",
+            "type": {
+              "vec": "i32"
+            }
+          },
+          {
+            "name": "influencers",
+            "type": {
+              "vec": "i32"
+            }
+          },
+          {
+            "name": "degens",
+            "type": {
+              "vec": "i32"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "InitializeUserParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "twitter",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AddUniqueNameProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CheckRoleProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "role",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpgradeUserProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CheckUpgradeProps",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    },
+    {
+      "name": "SendRequestProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "to",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AcceptRequestProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "requestId",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DeclineRequestProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "requestId",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveConnectionProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "connectionId",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitializeTopConnectionsProps",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    },
+    {
+      "name": "AddTopConnectionsProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "connection",
+            "type": "i32"
+          },
+          {
+            "name": "position",
+            "type": "u8"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveTopConnectionsProps",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "position",
+            "type": "u8"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "ParamsInvalid",
+      "msg": "Grant input parameters invalid"
+    }
+  ],
+  "metadata": {
+    "address": "HU7c5VwLom5ShB66EDWLa8vQPHBAkeTJ9yCtJYbuGS6E"
+  }
+}
