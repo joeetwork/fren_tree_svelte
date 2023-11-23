@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { clusterApiUrl } from '@solana/web3.js';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import { goto } from '$app/navigation';
@@ -17,12 +17,12 @@
 	const localStorageKey = 'walletAdapter';
 	const network = clusterApiUrl('mainnet-beta');
 	let showConnectWallet = false;
-	const connectWallet = async (event) => {
+	const connectWallet = async (event: CustomEvent<any>) => {
 		showConnectWallet = false;
 		await $walletStore.select(event.detail);
 		await $walletStore.connect();
 	};
-	const shortenAddress = (address) => `${address.slice(0, 4)}...${address.slice(-4)}`;
+	const shortenAddress = (address: string) => `${address.slice(0, 4)}...${address.slice(-4)}`;
 	const disconnect = () => {
 		if (confirm('Disconnect wallet?')) {
 			$walletStore.disconnect();

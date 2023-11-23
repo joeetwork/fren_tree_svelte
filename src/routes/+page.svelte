@@ -1,7 +1,6 @@
 <script lang="ts">
     import { walletStore } from "@svelte-on-solana/wallet-adapter-core";
 	import type { Assets, Item } from "../types/searchAssets";
-    // import type { Assets, Item } from "../types/searchAssets";
 
     let loading = false;
     let error = "";
