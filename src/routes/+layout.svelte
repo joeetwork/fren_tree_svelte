@@ -8,7 +8,7 @@
 	const network = clusterApiUrl(NETWORK);
 </script>
 
-<!-- <AnchorConnectionProvider {network} {idl} /> -->
+<AnchorConnectionProvider {network} {idl} />
 <nav class="sticky left-0 top-0 flex w-full items-center justify-between bg-indigo-900 p-3">
 	<h1 class="text-xl text-white">Fren Tree</h1>
 	<div class="flex items-center">

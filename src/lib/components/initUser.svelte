@@ -4,6 +4,7 @@
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 
 	const usersWallet = Keypair.generate();
+	let usersPda: PublicKey;
 
 	const airdrop = async () => {
 		const signature = await $workSpace.connection.requestAirdrop(
@@ -14,14 +15,14 @@
 		await $workSpace.connection.confirmTransaction(signature);
 	};
 
-	if (!$workSpace.program) {
-		return;
-	}
+	if ($workSpace.program) {
+		const [pda] = PublicKey.findProgramAddressSync(
+			[new TextEncoder().encode('USER'), usersWallet.publicKey.toBuffer()],
+			$workSpace.program.programId
+		);
 
-	const [usersPda] = PublicKey.findProgramAddressSync(
-		[new TextEncoder().encode('USER'), usersWallet.publicKey.toBuffer()],
-		$workSpace.program?.programId
-	);
+		usersPda = pda;
+	}
 
 	const params = { twitter: '', role: '' };
 
@@ -37,11 +38,9 @@
 				.signers([usersWallet])
 				.rpc();
 
-		
+			const test = await $workSpace.program?.account.userProfile.fetch(usersPda);
 
-            const test = await $workSpace.program?.account.userProfile.fetch(usersPda);
-
-console.log(test);
+			console.log(test);
 		} catch (err) {
 			console.log('Transaction error: ', err);
 		}
