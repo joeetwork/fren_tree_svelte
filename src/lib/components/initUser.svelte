@@ -26,9 +26,7 @@
 					authority: $walletStore.publicKey,
 					userProfile: usersPda,
 					systemProgram: SystemProgram.programId
-				})
-				.signers([$walletStore.signTransaction])
-				.rpc();
+				}).rpc();
 
 			const test = await $workSpace.program?.account.userProfile.fetch(usersPda);
 
