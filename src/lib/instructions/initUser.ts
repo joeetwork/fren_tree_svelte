@@ -1,16 +1,13 @@
-import { PublicKey, SystemProgram } from '@solana/web3.js';
+import { SystemProgram } from '@solana/web3.js';
 import type { InitializeUser } from '../../types/instructions';
+import { usersAccount } from '$lib/accounts/usersAccount';
 
 export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
-
 	if (!anchor.program) {
 		return;
 	}
 
-	const [usersPda] = PublicKey.findProgramAddressSync(
-		[new TextEncoder().encode('USER'), wallet.publicKey.toBuffer()],
-		anchor.program.programId
-	);
+	const usersPda = usersAccount({ anchor, wallet });
 
 	{
 		try {
