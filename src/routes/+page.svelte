@@ -31,8 +31,6 @@
 			loading = false;
 		}
 	};
-
-	$: console.log({ nfts });
 </script>
 
 {#if $walletStore.connected}

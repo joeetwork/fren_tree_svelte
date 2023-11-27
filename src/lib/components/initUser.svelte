@@ -17,8 +17,6 @@
 	const params = { twitter: '', role: '' };
 
 	async function createUser() {
-        console.log($walletStore);
-        
 		try {
 			await $workSpace.program?.methods
 				.initializeUser(params)
