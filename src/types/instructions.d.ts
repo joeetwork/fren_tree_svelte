@@ -14,3 +14,7 @@ export type AddUsername = BaseProps & {
 export type ChangeRole = BaseProps & {
 	role: string;
 };
+
+export type AddTopConnection = BaseProps & {
+	params: { connection: number, position: number, role: string  };
+};
