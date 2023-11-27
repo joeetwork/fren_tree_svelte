@@ -32,3 +32,8 @@ export type RequestAccount = BaseProps & {
 export type ConnectionAccount = BaseProps & {
 	idx: number;
 };
+
+export type RemoveConnectionAccount = BaseProps & {
+	toWallet: PublicKey;
+	idx: number;
+};
