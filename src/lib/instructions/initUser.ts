@@ -2,7 +2,6 @@ import { PublicKey, SystemProgram } from '@solana/web3.js';
 import type { InitializeUser } from '../../types/instructions';
 
 export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
-	console.log(anchor);
 
 	if (!anchor.program) {
 		return;
