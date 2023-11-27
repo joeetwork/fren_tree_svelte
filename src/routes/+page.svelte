@@ -2,6 +2,7 @@
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import type { Item } from '../types/searchAssets';
 	import UpgradeUser from '$lib/components/upgradeUser.svelte';
+	import ChangeRole from '$lib/components/changeRole.svelte';
 
 	let loading = false;
 	let error = '';
@@ -44,7 +45,7 @@
 			<button class="btn-primary btn" class:loading on:click={getNfts}>Get NFTs</button>
 		</div>
 
-<UpgradeUser />
+<ChangeRole />
 	</div>
 {/if}
 

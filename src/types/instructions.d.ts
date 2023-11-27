@@ -10,3 +10,7 @@ export type InitializeUser = BaseProps & {
 export type AddUsername = BaseProps & {
 	username: string;
 };
+
+export type ChangeRole = BaseProps & {
+	role: string;
+};
