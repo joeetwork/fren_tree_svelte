@@ -1,31 +1,17 @@
 import { PublicKey, SystemProgram } from '@solana/web3.js';
-import type { WorkSpace } from '@svelte-on-solana/wallet-adapter-anchor';
-import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
-import type { Writable } from 'svelte/store';
+import type { InitializeUser } from '../../types/instructions';
 
-interface Params {
-	anchor: Writable<WorkSpace>;
-	wallet: any;
-}
+export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
+	console.log(anchor);
 
-export const createUser = async ({ anchor, wallet }: Params) => {
-	let usersPda: PublicKey;
-console.log(anchor);
-
-	if (anchor.program) {
-		const [pda] = PublicKey.findProgramAddressSync(
-			[new TextEncoder().encode('USER'), anchor.publicKey.toBuffer()],
-			anchor.program.programId
-		);
-
-		usersPda = pda;
-	}
-
-	const params = { twitter: '', role: '' };
-
-	if (!usersPda) {
+	if (!anchor.program) {
 		return;
 	}
+
+	const [usersPda] = PublicKey.findProgramAddressSync(
+		[new TextEncoder().encode('USER'), wallet.publicKey.toBuffer()],
+		anchor.program.programId
+	);
 
 	{
 		try {
@@ -38,7 +24,7 @@ console.log(anchor);
 				})
 				.rpc();
 
-			const test = await workSpace.program?.account.userProfile.fetch(usersPda);
+			const test = await anchor.program?.account.userProfile.fetch(usersPda);
 
 			console.log(test);
 		} catch (err) {

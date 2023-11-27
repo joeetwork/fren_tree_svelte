@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { createUser } from '$lib/instructions/initUser';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
-    import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
+	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 
 	const handleClick = async () => {
-		await createUser($workSpace, $walletStore);
+		await createUser({
+			anchor: $workSpace,
+			wallet: $walletStore,
+			params: { twitter: '', role: '' }
+		});
 	};
 </script>
 
