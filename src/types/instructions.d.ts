@@ -16,5 +16,9 @@ export type ChangeRole = BaseProps & {
 };
 
 export type AddTopConnection = BaseProps & {
-	params: { connection: number, position: number, role: string  };
+	params: { connection: number; position: number; role: string };
+};
+
+export type RemoveTopConnection = BaseProps & {
+	params: { position: number; role: string };
 };
