@@ -1,3 +1,5 @@
+import type { PublicKey } from '@solana/web3.js';
+
 export type BaseProps = {
 	anchor: WorkSpace;
 	wallet: any;
@@ -21,4 +23,12 @@ export type AddTopConnection = BaseProps & {
 
 export type RemoveTopConnection = BaseProps & {
 	params: { position: number; role: string };
+};
+
+export type RequestAccount = BaseProps & {
+	toWallet: PublicKey;
+};
+
+export type ConnectionAccount = BaseProps & {
+	idx: number;
 };
