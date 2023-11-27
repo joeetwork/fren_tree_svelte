@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import type { Item } from '../types/searchAssets';
-	import InitUser from '$lib/components/initUser.svelte';
+	import Test from '$lib/components/test.svelte';
 
 	let loading = false;
 	let error = '';
@@ -44,7 +44,7 @@
 			<button class="btn-primary btn" class:loading on:click={getNfts}>Get NFTs</button>
 		</div>
 
-        <InitUser />
+        <Test />
 	</div>
 {/if}
 
