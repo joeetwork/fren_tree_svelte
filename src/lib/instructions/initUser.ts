@@ -8,13 +8,14 @@ interface Params {
 	wallet: any;
 }
 
-export const createUser = async ({anchor, wallet}: Params) => {
+export const createUser = async ({ anchor, wallet }: Params) => {
 	let usersPda: PublicKey;
+console.log(anchor);
 
-	if ($anchor.program) {
+	if (anchor.program) {
 		const [pda] = PublicKey.findProgramAddressSync(
-			[new TextEncoder().encode('USER'), $anchor.publicKey.toBuffer()],
-			$anchor.program.programId
+			[new TextEncoder().encode('USER'), anchor.publicKey.toBuffer()],
+			anchor.program.programId
 		);
 
 		usersPda = pda;
@@ -22,18 +23,22 @@ export const createUser = async ({anchor, wallet}: Params) => {
 
 	const params = { twitter: '', role: '' };
 
+	if (!usersPda) {
+		return;
+	}
+
 	{
 		try {
-			await $anchor.program?.methods
+			await anchor.program?.methods
 				.initializeUser(params)
 				.accounts({
-					authority: $wallet.publicKey,
+					authority: wallet.publicKey,
 					userProfile: usersPda,
 					systemProgram: SystemProgram.programId
 				})
 				.rpc();
 
-			const test = await $anchor.program?.account.userProfile.fetch(usersPda);
+			const test = await workSpace.program?.account.userProfile.fetch(usersPda);
 
 			console.log(test);
 		} catch (err) {

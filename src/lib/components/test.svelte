@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { createUser } from '$lib/instructions/initUser';
-    import { test } from './test2.svelte'
+	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
+    import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 
 	const handleClick = async () => {
-		await createUser();
+		await createUser($workSpace, $walletStore);
 	};
 </script>
 
