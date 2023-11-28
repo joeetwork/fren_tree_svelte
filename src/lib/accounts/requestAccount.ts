@@ -1,21 +1,14 @@
 import { PublicKey } from '@solana/web3.js';
-import type { RequestAccount } from '../../types/instructions';
-import { usersAccount } from './usersAccount';
+import type { RequestsAccount } from '../../types/instructions';
 
-export const requestAccount = async ({
-	anchor,
-	wallet,
-	toWallet
-}: RequestAccount): Promise<PublicKey> => {
-	const toUsersPda = usersAccount({ anchor, wallet: toWallet });
-
-	const toUsersCount = await anchor.program.account.userProfile.fetch(toUsersPda);
+export const requestAccount = ({ anchor, wallet, idx }: RequestsAccount): PublicKey => {
+	const usersWallet = wallet.publicKey ?? wallet;
 
 	const [pda] = PublicKey.findProgramAddressSync(
 		[
 			new TextEncoder().encode('REQUEST'),
-			toWallet.toBuffer(),
-			Buffer.from([toUsersCount.requests])
+			usersWallet.toBuffer(),
+			Buffer.from([idx ?? 0])
 		],
 		anchor.program.programId
 	);

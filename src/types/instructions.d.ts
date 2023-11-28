@@ -25,15 +25,20 @@ export type RemoveTopConnection = BaseProps & {
 	params: { position: number; role: string };
 };
 
-export type RequestAccount = BaseProps & {
-	toWallet: PublicKey;
-};
-
 export type ConnectionAccount = BaseProps & {
 	idx?: number;
 };
 
 export type RemoveConnectionAccount = BaseProps & {
 	toWallet: PublicKey;
+	idx: number;
+};
+
+export type RequestsAccount = BaseProps & {
+	toWallet?: PublicKey;
+	idx: number
+};
+
+export type RequestsPDAAccount = BaseProps & {
 	idx: number;
 };

@@ -68,11 +68,6 @@
           "isSigner": false
         },
         {
-          "name": "connectionAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "topConnectionsAccount",
           "isMut": true,
           "isSigner": false
