@@ -68,6 +68,11 @@
           "isSigner": false
         },
         {
+          "name": "connectionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false

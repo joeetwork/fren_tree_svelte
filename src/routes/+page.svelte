@@ -3,6 +3,7 @@
 	import type { Item } from '../types/searchAssets';
 	import UpgradeUser from '$lib/components/upgradeUser.svelte';
 	import ChangeRole from '$lib/components/changeRole.svelte';
+	import InitUser from '$lib/components/initUser.svelte';
 
 	let loading = false;
 	let error = '';
@@ -45,7 +46,7 @@
 			<button class="btn-primary btn" class:loading on:click={getNfts}>Get NFTs</button>
 		</div>
 
-<ChangeRole />
+<InitUser />
 	</div>
 {/if}
 

@@ -17,7 +17,7 @@ export const sendRequest = async ({ anchor, wallet, toWallet }: RequestAccount) 
 
 	const fromUser = await anchor.program?.account.userProfile.fetch(fromUsersPda);
 
-	const connectionPda = connectionAccount({ anchor, wallet, idx: fromUser.count ?? 0 });
+	const connectionPda = connectionAccount({ anchor, wallet, idx: fromUser.count });
 
 	try {
 		await anchor.program.methods

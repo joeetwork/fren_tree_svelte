@@ -1,6 +1,7 @@
 import { SystemProgram } from '@solana/web3.js';
 import type { InitializeUser } from '../../types/instructions';
 import { usersAccount } from '$lib/accounts/usersAccount';
+import { connectionAccount } from '$lib/accounts/connectionAccount';
 
 export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
 	if (!anchor.program) {
@@ -9,6 +10,8 @@ export const createUser = async ({ anchor, wallet, params }: InitializeUser) => 
 
 	const usersPda = usersAccount({ anchor, wallet });
 
+	const connectionPda = connectionAccount({anchor, wallet})
+
 	{
 		try {
 			await anchor.program?.methods
@@ -16,6 +19,7 @@ export const createUser = async ({ anchor, wallet, params }: InitializeUser) => 
 				.accounts({
 					authority: wallet.publicKey,
 					userProfile: usersPda,
+					connectionAccount: connectionPda,
 					systemProgram: SystemProgram.programId
 				})
 				.rpc();

@@ -30,7 +30,7 @@ export type RequestAccount = BaseProps & {
 };
 
 export type ConnectionAccount = BaseProps & {
-	idx: number;
+	idx?: number;
 };
 
 export type RemoveConnectionAccount = BaseProps & {
