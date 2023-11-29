@@ -1,5 +1,5 @@
 import { PublicKey } from '@solana/web3.js';
-import type { ConnectionAccount } from '../../types/instructions';
+import type { ConnectionAccount } from '../../../types/instructions';
 
 export const connectionAccount = ({ anchor, wallet, idx }: ConnectionAccount): PublicKey => {
 	const usersWallet = wallet.publicKey ?? wallet;

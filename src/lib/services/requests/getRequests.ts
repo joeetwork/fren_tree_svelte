@@ -1,5 +1,5 @@
-import { usersAccount } from '$lib/accounts/usersAccount';
-import { requestAccount } from '$lib/accounts/requestAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
+import { requestAccount } from '$lib/services/accounts/requestAccount';
 import type { BaseProps } from '../../../types/instructions';
 
 export const getRequests = async ({

@@ -1,5 +1,5 @@
 import { PublicKey } from '@solana/web3.js';
-import type { BaseProps } from '../../types/instructions';
+import type { BaseProps } from '../../../types/instructions';
 
 export const topConnectionsAccount = ({ anchor, wallet }: BaseProps): PublicKey => {
 	const usersWallet = wallet.publicKey ?? wallet;

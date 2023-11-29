@@ -1,6 +1,6 @@
-import { usersAccount } from '$lib/accounts/usersAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
-import { connectionAccount } from '$lib/accounts/connectionAccount';
+import { connectionAccount } from '$lib/services/accounts/connectionAccount';
 import type { RemoveConnectionAccount } from '../../../types/instructions';
 
 export const RemoveConnection = async ({

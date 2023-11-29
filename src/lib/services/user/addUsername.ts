@@ -1,5 +1,5 @@
-import { usernameAccount } from '$lib/accounts/usernameAccount';
-import { usersAccount } from '$lib/accounts/usersAccount';
+import { usernameAccount } from '$lib/services/accounts/usernameAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
 import type { AddUsername } from '../../../types/instructions';
 

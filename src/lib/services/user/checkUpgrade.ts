@@ -1,4 +1,4 @@
-import { usersAccount } from '$lib/accounts/usersAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
 import type { BaseProps } from '../../../types/instructions';
 

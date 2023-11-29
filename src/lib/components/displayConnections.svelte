@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { connectionAccount } from '$lib/accounts/connectionAccount';
-	import { usersAccount } from '$lib/accounts/usersAccount';
+	import { connectionAccount } from '$lib/services/accounts/connectionAccount';
+	import { usersAccount } from '$lib/services/accounts/usersAccount';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 

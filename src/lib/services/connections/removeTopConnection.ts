@@ -1,6 +1,6 @@
 import { SystemProgram } from '@solana/web3.js';
-import { topConnectionsAccount } from '$lib/accounts/topConnectionsAccount';
-import { usersAccount } from '$lib/accounts/usersAccount';
+import { topConnectionsAccount } from '$lib/services/accounts/topConnectionsAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
 import type { RemoveTopConnection } from '../../../types/instructions';
 
 export const removeTopConnection = async ({ anchor, wallet, params }: RemoveTopConnection) => {

@@ -1,7 +1,7 @@
 import { SystemProgram } from '@solana/web3.js';
-import { usersAccount } from '$lib/accounts/usersAccount';
-import { connectionAccount } from '$lib/accounts/connectionAccount';
-import { topConnectionsAccount } from '$lib/accounts/topConnectionsAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
+import { connectionAccount } from '$lib/services/accounts/connectionAccount';
+import { topConnectionsAccount } from '$lib/services/accounts/topConnectionsAccount';
 import type { InitializeUser } from '../../../types/instructions';
 
 export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
@@ -11,7 +11,7 @@ export const createUser = async ({ anchor, wallet, params }: InitializeUser) => 
 
 	const usersPda = usersAccount({ anchor, wallet });
 
-	const connectionPda = connectionAccount({anchor, wallet})
+	const connectionPda = connectionAccount({ anchor, wallet });
 
 	const topConnectionsPda = topConnectionsAccount({ anchor, wallet });
 

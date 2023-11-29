@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { usersAccount } from '$lib/accounts/usersAccount';
+	import { usersAccount } from '$lib/services/accounts/usersAccount';
 	import { sendRequest } from '$lib/services/requests/sendRequest';
 	import { PublicKey } from '@solana/web3.js';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';

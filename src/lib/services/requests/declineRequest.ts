@@ -1,7 +1,7 @@
-import { usersAccount } from '$lib/accounts/usersAccount';
+import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
-import { requestAccount } from '$lib/accounts/requestAccount';
-import { connectionAccount } from '$lib/accounts/connectionAccount';
+import { requestAccount } from '$lib/services/accounts/requestAccount';
+import { connectionAccount } from '$lib/services/accounts/connectionAccount';
 import type { RequestsAccount } from '../../../types/instructions';
 
 export const declineRequest = async ({ anchor, wallet, toWallet, idx }: RequestsAccount) => {
