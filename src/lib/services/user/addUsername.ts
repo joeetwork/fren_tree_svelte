@@ -1,7 +1,7 @@
 import { usernameAccount } from '$lib/accounts/usernameAccount';
 import { usersAccount } from '$lib/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
-import type { AddUsername } from '../../types/instructions';
+import type { AddUsername } from '../../../types/instructions';
 
 export const addUsername = async ({ anchor, wallet, username }: AddUsername) => {
 	if (!anchor.program) {

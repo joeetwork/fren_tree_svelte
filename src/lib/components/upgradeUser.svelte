@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { upgradeUser } from '$lib/instructions/upgradeUser';
+	import { upgradeUser } from '$lib/services/user/upgradeUser';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 

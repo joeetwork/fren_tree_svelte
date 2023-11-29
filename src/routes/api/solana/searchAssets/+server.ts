@@ -1,4 +1,4 @@
-import { searchAssets } from '$lib/helius/search-assets.js';
+import { searchAssets } from '$lib/services/helius/searchAssets.js';
 
 import { HELIUS_KEY } from '$env/static/private';
 

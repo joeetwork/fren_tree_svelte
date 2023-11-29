@@ -38,7 +38,3 @@ export type RequestsAccount = BaseProps & {
 	toWallet?: PublicKey;
 	idx: number
 };
-
-export type RequestsPDAAccount = BaseProps & {
-	idx: number;
-};

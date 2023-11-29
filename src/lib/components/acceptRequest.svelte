@@ -1,33 +1,12 @@
 <script lang="ts">
-	import { connectionAccount } from '$lib/accounts/connectionAccount';
-	import { requestAccount } from '$lib/accounts/requestAccount';
-	import { usersAccount } from '$lib/accounts/usersAccount';
-	import { acceptRequest } from '$lib/instructions/acceptRequest';
+	import { getRequests } from '$lib/services/requests/getRequests';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 
-	let requests = new Map();
+	let requests: Map<number, Record<string, unknown>>;
 
-	const getRequests = async () => {
-		const usersPda = usersAccount({ anchor: $workSpace, wallet: $walletStore });
-
-		const user = await $workSpace.program?.account.userProfile.fetch(usersPda);
-
-		if (user) {
-			for (let i = 0; i < (user.requests as number); i++) {
-				const requestPda = await requestAccount({
-					anchor: $workSpace,
-					wallet: $walletStore,
-					idx: i
-				});
-
-				const request = await $workSpace.program?.account.requestAccount.fetch(requestPda);
-
-				requests.set(i, request);
-			}
-		}
-
-		console.log(requests.entries());
+	const handleRequests = async () => {
+		requests = await getRequests({ anchor: $workSpace, wallet: $walletStore });
 	};
 
 	// const acceptRequests = async () => {
@@ -51,4 +30,4 @@
 	// };
 </script>
 
-<button on:click={getRequests}>Get requests</button>
+<button on:click={handleRequests}>Get requests</button>

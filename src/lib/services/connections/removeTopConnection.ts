@@ -1,9 +1,9 @@
 import { SystemProgram } from '@solana/web3.js';
-import type { AddTopConnection } from '../../types/instructions';
 import { topConnectionsAccount } from '$lib/accounts/topConnectionsAccount';
 import { usersAccount } from '$lib/accounts/usersAccount';
+import type { RemoveTopConnection } from '../../../types/instructions';
 
-export const addTopConnection = async ({ anchor, wallet, params }: AddTopConnection) => {
+export const removeTopConnection = async ({ anchor, wallet, params }: RemoveTopConnection) => {
 	if (!anchor.program) {
 		return;
 	}
@@ -14,7 +14,7 @@ export const addTopConnection = async ({ anchor, wallet, params }: AddTopConnect
 
 	try {
 		await anchor.program.methods
-			.addTopConnections({ params })
+			.removeTopConnections(params)
 			.accounts({
 				userProfile: usersPda,
 				authority: wallet.publicKey,

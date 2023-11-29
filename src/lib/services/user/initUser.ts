@@ -1,8 +1,8 @@
 import { SystemProgram } from '@solana/web3.js';
-import type { InitializeUser } from '../../types/instructions';
 import { usersAccount } from '$lib/accounts/usersAccount';
 import { connectionAccount } from '$lib/accounts/connectionAccount';
 import { topConnectionsAccount } from '$lib/accounts/topConnectionsAccount';
+import type { InitializeUser } from '../../../types/instructions';
 
 export const createUser = async ({ anchor, wallet, params }: InitializeUser) => {
 	if (!anchor.program) {

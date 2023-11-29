@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { removeTopConnection } from '$lib/instructions/removeTopConnection';
+	import { removeTopConnection } from '$lib/services/connections/removeTopConnection';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 

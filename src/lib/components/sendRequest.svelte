@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { usersAccount } from '$lib/accounts/usersAccount';
-	import { sendRequest } from '$lib/instructions/sendRequest';
+	import { sendRequest } from '$lib/services/requests/sendRequest';
 	import { PublicKey } from '@solana/web3.js';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';

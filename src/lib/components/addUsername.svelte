@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { addUsername } from '$lib/instructions/addUsername';
+	import { addUsername } from '$lib/services/user/addUsername';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 

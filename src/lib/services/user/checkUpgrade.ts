@@ -1,6 +1,6 @@
 import { usersAccount } from '$lib/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
-import type { BaseProps } from '../../types/instructions';
+import type { BaseProps } from '../../../types/instructions';
 
 export const checkUpgrade = async ({ anchor, wallet }: BaseProps) => {
 	if (!anchor.program) {

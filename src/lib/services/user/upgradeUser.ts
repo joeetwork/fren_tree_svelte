@@ -1,21 +1,25 @@
 import { usersAccount } from '$lib/accounts/usersAccount';
-import { SystemProgram } from '@solana/web3.js';
-import type { ChangeRole } from '../../types/instructions';
+import { PublicKey, SystemProgram } from '@solana/web3.js';
+import { OWNERSWALLET } from '$lib/const';
+import type { BaseProps } from '../../../types/instructions';
 
-export const changeRole = async ({ anchor, wallet, role }: ChangeRole) => {
+export const upgradeUser = async ({ anchor, wallet }: BaseProps) => {
 	if (!anchor.program) {
 		return;
 	}
 
 	const usersPda = usersAccount({ anchor, wallet });
 
+	const ownersWallet = new PublicKey(OWNERSWALLET);
+
 	try {
 		await anchor.program.methods
-			.changeRole({ role })
+			.upgradeUser()
 			.accounts({
 				authority: wallet.publicKey,
 				userProfile: usersPda,
-				systemProgram: SystemProgram.programId
+				systemProgram: SystemProgram.programId,
+				to: ownersWallet
 			})
 			.rpc();
 

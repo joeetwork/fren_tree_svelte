@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { addTopConnection } from '$lib/instructions/addTopConnection';
+	import { addTopConnection } from '$lib/services/connections/addTopConnection';
 	import { workSpace } from '@svelte-on-solana/wallet-adapter-anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 

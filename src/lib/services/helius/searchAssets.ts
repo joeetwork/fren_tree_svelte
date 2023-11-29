@@ -1,5 +1,5 @@
 import { HELIUS_API_URL } from '$lib/const';
-import type { AssetParams, Assets } from '../../types/searchAssets';
+import type { AssetParams, Assets } from '../../../types/searchAssets';
 
 export const searchAssets = async (params: AssetParams, apiKey: string) => {
 	const response = await fetch(`${HELIUS_API_URL}?api-key=${apiKey}`, {
