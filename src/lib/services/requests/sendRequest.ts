@@ -2,9 +2,9 @@ import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
 import { requestAccount } from '$lib/services/accounts/requestAccount';
 import { connectionAccount } from '$lib/services/accounts/connectionAccount';
-import type { RequestsAccount } from '../../../types/instructions';
+import type { SendRequestsAccount } from '../../../types/instructions';
 
-export const sendRequest = async ({ anchor, wallet, toWallet, idx }: RequestsAccount) => {
+export const sendRequest = async ({ anchor, wallet, toWallet, idx }: SendRequestsAccount) => {
 	if (!anchor.program) {
 		return;
 	}
@@ -17,7 +17,7 @@ export const sendRequest = async ({ anchor, wallet, toWallet, idx }: RequestsAcc
 
 	const toUsersPda = usersAccount({ anchor, wallet: toWallet });
 
-	const requestPda = requestAccount({ anchor, wallet: toWallet, idx });
+	const requestPda = requestAccount({ anchor, wallet: toWallet, requestId: idx });
 
 	try {
 		await anchor.program.methods

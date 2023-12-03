@@ -2,33 +2,29 @@ import { usersAccount } from '$lib/services/accounts/usersAccount';
 import { SystemProgram } from '@solana/web3.js';
 import { requestAccount } from '$lib/services/accounts/requestAccount';
 import { connectionAccount } from '$lib/services/accounts/connectionAccount';
-import type { RequestsAccount } from '../../../types/instructions';
+import type { AcceptRequestsAccount } from '../../../types/instructions';
 
-export const acceptRequest = async ({ anchor, wallet, toWallet, idx }: RequestsAccount) => {
+export const acceptRequest = async ({ anchor, wallet, from, requestId, connectionId }: AcceptRequestsAccount) => {
 	if (!anchor.program) {
 		return;
 	}
 
-	const fromUsersPda = usersAccount({ anchor, wallet });
+	const fromConnectionPda = connectionAccount({ anchor, wallet: from,  idx: connectionId });
 
-	const fromUser = await anchor.program?.account.userProfile.fetch(fromUsersPda);
+	const toUsersPda = usersAccount({ anchor, wallet });
 
-	const fromConnectionPda = connectionAccount({ anchor, wallet, idx: fromUser.count });
-
-	const toUsersPda = usersAccount({ anchor, wallet: toWallet });
-
-	const requestPda = requestAccount({ anchor, wallet: toWallet, idx });
+	const requestPda = requestAccount({ anchor, wallet, requestId });
 
 	const toUser = await anchor.program?.account.userProfile.fetch(toUsersPda);
 
-	const toConnectionPda = connectionAccount({ anchor, wallet: toWallet, idx: toUser.count });
+	const toConnectionPda = connectionAccount({ anchor, wallet, idx: toUser.count });
 
 	try {
 		await anchor.program.methods
-			.acceptRequest({ requestId: idx })
+			.acceptRequest({ requestId })
 			.accounts({
 				toAccount: toUsersPda,
-				authority: toWallet,
+				authority: wallet.publicKey,
 				systemProgram: SystemProgram.programId,
 				requestAccount: requestPda,
 				connectionAccount: fromConnectionPda,

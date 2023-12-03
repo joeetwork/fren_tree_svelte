@@ -1,11 +1,11 @@
 import { PublicKey } from '@solana/web3.js';
-import type { RequestsAccount } from '../../../types/instructions';
+import type { RequestsDerivedAccount } from '../../../types/instructions';
 
-export const requestAccount = ({ anchor, wallet, idx }: RequestsAccount): PublicKey => {
+export const requestAccount = ({ anchor, wallet, requestId }: RequestsDerivedAccount): PublicKey => {
 	const usersWallet = wallet.publicKey ?? wallet;
 
 	const [pda] = PublicKey.findProgramAddressSync(
-		[new TextEncoder().encode('REQUEST'), usersWallet.toBuffer(), Buffer.from([idx ?? 0])],
+		[new TextEncoder().encode('REQUEST'), usersWallet.toBuffer(), Buffer.from([requestId ?? 0])],
 		anchor.program.programId
 	);
 

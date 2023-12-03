@@ -465,11 +465,19 @@
             "type": "i64"
           },
           {
-            "name": "connections",
+            "name": "lastConnections",
             "type": "u8"
           },
           {
-            "name": "requests",
+            "name": "lastRequests",
+            "type": "u8"
+          },
+          {
+            "name": "connectionCount",
+            "type": "u8"
+          },
+          {
+            "name": "requestCount",
             "type": "u8"
           }
         ]
@@ -490,6 +498,10 @@
           },
           {
             "name": "connectionNumber",
+            "type": "u8"
+          },
+          {
+            "name": "requestNumber",
             "type": "u8"
           }
         ]

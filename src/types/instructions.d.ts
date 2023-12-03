@@ -34,7 +34,25 @@ export type RemoveConnectionAccount = BaseProps & {
 	idx: number;
 };
 
-export type RequestsAccount = BaseProps & {
-	toWallet?: PublicKey;
-	idx: number
+export type AcceptRequestsAccount = BaseProps & {
+	from?: PublicKey;
+	requestId: number;
+	connectionId: number;
 };
+
+export type SendRequestsAccount = BaseProps & {
+	toWallet: PublicKey;
+	idx: number;
+};
+
+export type RequestsDerivedAccount = BaseProps & {
+	from?: PublicKey;
+	requestId: number;
+};
+
+export type Requests = {
+	authority: string
+	from: string
+	connectionNumber: number
+	requestNumber: number
+  }
